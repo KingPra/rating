@@ -1,76 +1,18 @@
-import tester from "./reviews.js";
 import data from "./reviews.js";
 
+//prints stars depending on rating
 function stars(num) {
-  switch (num) {
-    case 1:
-      return `
-        <div>
-        <i class="fa fa-star" style="color:#ffe500"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        </div>
-        `;
-      break;
-    case 2:
-      return `
-        <div>
-        <i class="fa fa-star" style="color:#ffe500"></i>
-        <i class="fa fa-star" style="color:#ffe500"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        </div>
-        `;
-      break;
-    case 3:
-      return `
-        <div>
-        <i class="fa fa-star" style="color:#ffe500"></i>
-        <i class="fa fa-star" style="color:#ffe500"></i>
-        <i class="fa fa-star" style="color:#ffe500"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        </div>
-        `;
-      break;
-    case 4:
-      return `
-        <div>
-        <i class="fa fa-star" style="color:#ffe500"></i>
-        <i class="fa fa-star" style="color:#ffe500"></i>
-        <i class="fa fa-star" style="color:#ffe500"></i>
-        <i class="fa fa-star" style="color:#ffe500"></i>
-        <i class="fa fa-star"></i>
-        </div>
-        `;
-      break;
-    case 5:
-      return `
-        <div>
-        <i class="fa fa-star" style="color:#ffe500"></i>
-        <i class="fa fa-star" style="color:#ffe500"></i>
-        <i class="fa fa-star" style="color:#ffe500"></i>
-        <i class="fa fa-star" style="color:#ffe500"></i>
-        <i class="fa fa-star" style="color:#ffe500"></i>
-        </div>
-        `;
-      break;
-    default:
-      return `
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>`;
+  let stars = [];
+  for (let i = 0; i < 5; i++) {
+    i < num
+      ? stars.push('<i class="fa fa-star" style="color:#ffe500"></i>')
+      : stars.push('<i class="fa fa-star-o"></i>');
   }
+  return stars.join(" ");
 }
-console.log(stars());
-const ratings = document.querySelector(".name");
-const container = document.querySelector(".container");
 
+// dynamically generates list of reviews returned from data
+const container = document.querySelector(".container");
 container.innerHTML = data
   .map(
     review => `
